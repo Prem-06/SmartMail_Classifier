@@ -3,6 +3,7 @@ import { GoogleLogin } from '@react-oauth/google'
 const Sign = () => {
     const handleSuccess = (credentialResponse) => {
         console.log("sign in succes");
+        console.log(credentialResponse)
       };
     
       const handleError = () => {
