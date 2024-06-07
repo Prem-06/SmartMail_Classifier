@@ -6,7 +6,7 @@ function App() {
  
 
   return (
-   <GoogleOAuthProvider clientId="660229840633-m1romsqgst6mu1pkjth0io3hpq9a32jk.apps.googleusercontent.com">
+   <GoogleOAuthProvider clientId="105699803734-s127tjsrli19c9qq71fomh3o669dg29b.apps.googleusercontent.com">
  <div>
   <Sign/>
  </div>
