@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/index.html" },
+      { "source": "/sigin", "destination": "/index.html" },
+      { "source": "/email_page", "destination": "/index.html" }
+    ]
+  }
+  

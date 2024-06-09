@@ -2,6 +2,7 @@
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
+  "proxy": "https://account.docusign.com/oauth/token",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,8 +12,13 @@
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
+    "axios": "^1.7.2",
+    "gapi-script": "^1.2.0",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
