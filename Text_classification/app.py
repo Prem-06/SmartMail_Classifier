@@ -6,6 +6,7 @@ import nltk
 from flask_cors import CORS
 nltk.download('stopwords')
 from nltk.corpus import stopwords
+import numpy as np
 
 def preprocess_text(text):
     text = re.sub(r'[^a-zA-Z\s]', '', text)
@@ -40,4 +41,4 @@ def process_input():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    serve(app, host='0.0.0.0', port=8000)
+    serve(app, host='0.0.0.0', port=5000)
