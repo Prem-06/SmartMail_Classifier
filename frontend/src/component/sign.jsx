@@ -21,16 +21,7 @@ const Signin= () => {
   })
     
   function login(){
-    if(openai_key!=""){
-      localStorage.setItem('openai_key',openai_key)
-      setopenai_key("")
       data()
-    }
-    else{
-      notifyB('OpenAI key Required')
-    }
-    
-   
   }
 
   useEffect(() => {
@@ -55,8 +46,7 @@ const Signin= () => {
   }, [user])
 
   return (
-    <div className='signin'>
-  <input type="text" placeholder='Enter OpenAI Key' value={openai_key} onChange={(e)=>{setopenai_key(e.target.value)}} />   
+    <div className='signin'>  
  <button type="button" class="google-sign-in-button" onClick={()=>{login()}}>Sign in with Google</button>
          
     </div>

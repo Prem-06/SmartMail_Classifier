@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
 import Content from './content.jsx'
 import Email_component from './email_component'
 import { toast } from 'react-toastify'
 import './email_page.css'
+
 const Email_page = () => {
+    
      const notifyB=(val)=>toast.error(val)
      const notifyA=(val)=>toast.success(val)
     const access_token=localStorage.getItem('access_token')
@@ -11,6 +13,7 @@ const Email_page = () => {
    const [email_count,setemail_count]=useState(0)
     const [email_list,setemail_list]=useState([])
     const [list,setlist]=useState([])
+    const [textlist,settextlist]=useState([])
     const handleChange = (e) => {
       setemail_count(parseInt(e.target.value));
     };
@@ -28,7 +31,8 @@ const Email_page = () => {
     },[])
 
     async function get_emails(x){
-      await fetch(`https://email-assignment.onrender.com/get_emails`,{
+      setloader(true)
+      await fetch(`http://localhost:3000/get_emails`,{
         method:'get',
         headers:{
           authorization:access_token,
@@ -37,27 +41,30 @@ const Email_page = () => {
       }).then((val)=>{
         return val.json()
       }).then((res)=>{
-        
         setemail_list(res.data)
-       
+       let text_list=[]
+       res.data.map((i,key)=>{
+        text_list.push(i.message)
+       })
+       settextlist(text_list)
+       setloader(false)
       }).catch((err)=>{
         console.log(err)
       })
     }
 
     async function get_category(list){
-      await fetch('https://email-assignment.onrender.com/classify',{
+      await fetch('http://127.0.0.1:5000/process',{
         method:'post',
         headers:{
-          authorization:localStorage.getItem('openai_key'),
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ list: list })
+        body: JSON.stringify({ "texts": list })
 
       }).then((val)=>{
         return val.json()
       }).then((res)=>{
-        setlist(res.list)
+        setlist(res.category)
         notifyA('Category Mentioned')
       }).catch((err)=>{
         console.log(err)
@@ -98,12 +105,12 @@ const Email_page = () => {
           />
         </svg>
       </div>
-      <div> <input type="button" value="Classify" onClick={()=>{get_category(email_list)}}/></div>
+      <div> <input type="button" value="Classify" onClick={()=>{get_category(textlist)}}/></div>
     </div>
      <div className="email_list">
       {
          email_list.map((e,k)=>{ 
-          return <Email_component data={e} category={getcategory(k)} />
+          return <Email_component data={e} category={getcategory(k)} key={k} />
         })
       }
        
