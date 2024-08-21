@@ -87,12 +87,14 @@ The machine learning model will be running at http://localhost:5000.
 
 
 ## 🚀 Usage
-Sign In: Use your Google account to sign in.
-Fetch Emails: Retrieve your latest emails with one click.
-View Categories: See your emails categorized into spam, social, promotional, marketing, and important.
+
+- **Sign In**: Use your Google account to sign in.
+- **Fetch Emails**: Retrieve your latest emails with one click.
+- **View Categories**: See your emails categorized into spam, social, promotional, marketing, and important.
 
 ## 🛠️ Technologies Used
-Frontend: React, JavaScript, HTML, CSS
-Backend: Node.js, Express.js
-Machine Learning: Python, Flask, Scikit-learn
-Authentication: Google OAuth 2.0
+
+- **Frontend**: React, JavaScript, HTML, CSS
+- **Backend**: Node.js, Express.js
+- **Machine Learning**: Python, Flask, Scikit-learn
+- **Authentication**: Google OAuth 2.0
