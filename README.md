@@ -20,7 +20,7 @@ The project is divided into three main components:
 └── 📁 Text_classification
 ```
 
-##⚛️ Frontend (React)
+## ⚛️ Frontend (React)
 
 The frontend provides the user interface for signing in through Google and displaying classified emails.
 Installation and Setup
@@ -46,7 +46,7 @@ Start the development server:
 npm run dev
 ```
 
-##🌐 Backend (Node.js)
+## 🌐 Backend (Node.js)
 The backend handles user authentication, fetching emails, and serving data to the frontend.
 Installation and Setup
 Navigate to the backend directory:
@@ -66,7 +66,7 @@ node index.js
 The backend will be running at http://localhost:3000.
 
 
-##🧠 Text Classification (Machine Learning Model)
+## 🧠 Text Classification (Machine Learning Model)
 This component is responsible for classifying the fetched emails into the specified categories.
 Installation and Setup
 
@@ -86,12 +86,12 @@ python app.py
 The machine learning model will be running at http://localhost:5000.
 
 
-##🚀 Usage
+## 🚀 Usage
 Sign In: Use your Google account to sign in.
 Fetch Emails: Retrieve your latest emails with one click.
 View Categories: See your emails categorized into spam, social, promotional, marketing, and important.
 
-##🛠️ Technologies Used
+## 🛠️ Technologies Used
 Frontend: React, JavaScript, HTML, CSS
 Backend: Node.js, Express.js
 Machine Learning: Python, Flask, Scikit-learn
