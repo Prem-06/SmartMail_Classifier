@@ -4,9 +4,9 @@ import joblib
 import re
 import nltk
 from flask_cors import CORS
-from nltk.corpus import stopwords
 import numpy as np
 nltk.download('stopwords')
+from nltk.corpus import stopwords
 def preprocess_text(text):
     text = re.sub(r'[^a-zA-Z\s]', '', text)
     text = text.lower()
