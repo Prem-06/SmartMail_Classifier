@@ -31,8 +31,8 @@ const Email_page = () => {
     },[])
 
     async function get_emails(x){
-      setloader(true)
-      await fetch(`http://localhost:3000/get_emails`,{
+      // setloader(true)
+      await fetch(`https://email-assignment.onrender.com/get_emails`,{
         method:'get',
         headers:{
           authorization:access_token,
@@ -47,14 +47,14 @@ const Email_page = () => {
         text_list.push(i.message)
        })
        settextlist(text_list)
-       setloader(false)
+      //  setloader(false)
       }).catch((err)=>{
         console.log(err)
       })
     }
 
     async function get_category(list){
-      await fetch('http://127.0.0.1:5000/process',{
+      await fetch('https://email-assignment-1.onrender.com/process',{
         method:'post',
         headers:{
           'Content-Type': 'application/json'

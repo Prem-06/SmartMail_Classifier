@@ -10,9 +10,10 @@ import Context from './context.jsx';
 import { useState } from 'react';
 function App() {
  const [loader,setloader]=useState(false)
-
+const backend_url="https://email-assignment.onrender.com"
+const model_url="https://email-assignment-1.onrender.com"
   return (
-    <Context.Provider value={{setloader}}>
+    <Context.Provider value={{setloader,backend_url,model_url}}>
       {loader?(<Audio
   height="80"
   width="80"
