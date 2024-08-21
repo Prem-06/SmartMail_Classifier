@@ -1,82 +1,88 @@
-SmartMail Classifier
-SmartMail Classifier is a full-stack application that fetches the latest emails from a user's inbox, classifies them into different categories using a machine learning model, and displays them accordingly. The classification categories include spam, social, promotional, marketing, and important.
+# 📧 SmartMail Classifier
 
-Project Structure
+SmartMail Classifier is a full-stack application that helps users organize their emails by categorizing them into different categories using a machine learning model. The categories include **spam**, **social**, **promotional**, **marketing**, and **important**. 
+
+Users can sign in with their Google account, fetch their latest emails, and see them automatically classified.
+
+## 📁 Project Structure
+
 The project is divided into three main components:
 
-Frontend (React)
-Backend (Node.js)
-Text Classification (Machine Learning Model)
-1. Frontend (React)
-The frontend is built using React, providing a user-friendly interface for signing in via Google and viewing classified emails.
+- **Frontend**: Built with React.
+- **Backend**: Built with Node.js and Express.js.
+- **Text Classification**: A Machine Learning model built with Python and Flask.
 
-Installation
+```bash
+📂 SmartMail_Classifier
+│
+├── 📁 frontend
+├── 📁 backend
+└── 📁 Text_classification
+
+⚛️ Frontend (React)
+The frontend provides the user interface for signing in through Google and displaying classified emails.
+
+Installation and Setup
 Navigate to the frontend directory:
 
 bash
-Copy code
 cd frontend
 Install the dependencies:
 
 bash
-Copy code
 npm install
-Run the application:
+Start the development server:
 
 bash
-Copy code
-npm start
-The frontend will be running on http://localhost:3000.
+npm run dev
 
-2. Backend (Node.js)
-The backend is developed in Node.js, handling authentication, fetching emails, and serving data to the frontend.
 
-Installation
+🌐 Backend (Node.js)
+The backend handles user authentication, fetching emails, and serving data to the frontend.
+
+Installation and Setup
 Navigate to the backend directory:
 
 bash
-Copy code
 cd backend
 Install the dependencies:
 
 bash
-Copy code
 npm install
-Run the server:
+Start the server:
 
 bash
-Copy code
 node index.js
-The backend will be running on http://localhost:5000.
+The backend will be running at http://localhost:3000.
 
-3. Text Classification (Machine Learning Model)
-The Text Classification component is a Python-based machine learning model that classifies emails into five categories: spam, social, promotional, marketing, and important.
 
-Installation
+🧠 Text Classification (Machine Learning Model)
+This component is responsible for classifying the fetched emails into the specified categories.
+
+Installation and Setup
 Navigate to the Text_classification directory:
 
 bash
-Copy code
 cd Text_classification
 Install the required Python packages:
 
 bash
-Copy code
 pip install -r requirements.txt
-Run the application:
+Start the Flask application:
 
 bash
-Copy code
 python app.py
-The model will be running on http://localhost:8000.
+The machine learning model will be running at http://localhost:5000.
 
-Usage
-Sign in using your Google account.
-Fetch the latest emails from your inbox.
-View emails categorized into spam, social, promotional, marketing, and important.
-Technologies Used
-Frontend: React
+
+🚀 Usage
+Sign In: Use your Google account to sign in.
+Fetch Emails: Retrieve your latest emails with one click.
+View Categories: See your emails categorized into spam, social, promotional, marketing, and important.
+
+🛠️ Technologies Used
+Frontend: React, JavaScript, HTML, CSS
 Backend: Node.js, Express.js
-Machine Learning: Python, Flask, Scikit-learn
-License
-This project is licensed under the MIT License.
+Machine Learning: Python, Flask, Scikit-learn, Natural Language Processing (NLP)
+Database: (Mention if you’re using any database, e.g., MongoDB)
+Authentication: Google OAuth 2.0
