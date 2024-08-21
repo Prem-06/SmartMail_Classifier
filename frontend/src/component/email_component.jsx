@@ -2,12 +2,13 @@ import React from 'react'
 import './email_component.css'
 const Email_component = (props) => {
   const {data,category}=props
+
   function category_color(category) {
     if (category === "spam") {
-        return "#FF4500"; 
+        return "red"; 
     }
     else if (category === "important") {
-        return "#FFD700";  
+        return "#0033cc";  
     }
     else if (category === "social") {
         return "#1E90FF";  
@@ -16,7 +17,7 @@ const Email_component = (props) => {
         return "#FF69B4"; 
     }
     else {
-        return "#000000";  
+        return "#ff6600";  
     }
 }
 

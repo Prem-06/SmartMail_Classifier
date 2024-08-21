@@ -3,14 +3,16 @@ import Content from './content.jsx'
 import Email_component from './email_component'
 import { toast } from 'react-toastify'
 import './email_page.css'
-
+import Context from '../context.jsx'
+import { Audio } from 'react-loader-spinner'
 const Email_page = () => {
-    
+  const [loader,setloader]=useState(false)
+    const {backend_url,model_url}=useContext(Context)
      const notifyB=(val)=>toast.error(val)
      const notifyA=(val)=>toast.success(val)
     const access_token=localStorage.getItem('access_token')
     const [profile,setprofile]=useState({})
-   const [email_count,setemail_count]=useState(0)
+   const [email_count,setemail_count]=useState(1)
     const [email_list,setemail_list]=useState([])
     const [list,setlist]=useState([])
     const [textlist,settextlist]=useState([])
@@ -31,8 +33,8 @@ const Email_page = () => {
     },[])
 
     async function get_emails(x){
-      // setloader(true)
-      await fetch(`https://email-assignment.onrender.com/get_emails`,{
+      setloader(true)
+      await fetch(`${backend_url}/get_emails`,{
         method:'get',
         headers:{
           authorization:access_token,
@@ -46,15 +48,19 @@ const Email_page = () => {
        res.data.map((i,key)=>{
         text_list.push(i.message)
        })
+       setloader(false)
        settextlist(text_list)
-      //  setloader(false)
+       if(res.error){
+        notifyB(res.error)
+      }
       }).catch((err)=>{
         console.log(err)
       })
     }
 
     async function get_category(list){
-      await fetch('https://email-assignment-1.onrender.com/process',{
+      setloader(true)
+      await fetch(`${model_url}/process`,{
         method:'post',
         headers:{
           'Content-Type': 'application/json'
@@ -65,6 +71,7 @@ const Email_page = () => {
         return val.json()
       }).then((res)=>{
         setlist(res.category)
+        setloader(false)
         notifyA('Category Mentioned')
       }).catch((err)=>{
         console.log(err)
@@ -74,7 +81,7 @@ const Email_page = () => {
 
   return (
     <div className='email_page'>
-    <h1>CheckEmails.com</h1>
+    <h1>SmartMail Classifier</h1>
     <Content profile={profile}/>
      <div className="button-div">
       <div>
@@ -89,10 +96,10 @@ const Email_page = () => {
           xmlns="http://www.w3.org/2000/svg"
           width="16"
           height="16"
-          fill="currentColor"
+          fill="white"
           className="bi bi-arrow-right"
           viewBox="0 0 16 16"
-          style={{ marginLeft: '5px', cursor: 'pointer' }}
+          style={{ marginLeft: '5px', cursor: 'pointer' ,color:'white'}}
           onClick={()=>{get_emails(email_count)}} 
         >
           <path
@@ -105,13 +112,24 @@ const Email_page = () => {
           />
         </svg>
       </div>
+      
       <div> <input type="button" value="Classify" onClick={()=>{get_category(textlist)}}/></div>
     </div>
      <div className="email_list">
       {
-         email_list.map((e,k)=>{ 
+        loader?(<div className="loader-class">
+          <Audio
+              height="80"
+              width="80"
+              radius="9"
+              color="white"
+              ariaLabel="loading"
+              wrapperStyle
+              wrapperClass
+            />
+          </div>):( email_list.map((e,k)=>{ 
           return <Email_component data={e} category={getcategory(k)} key={k} />
-        })
+        }))
       }
        
      </div>

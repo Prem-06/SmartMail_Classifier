@@ -12,7 +12,7 @@ const Signin= () => {
   const navigate=useNavigate();
   const [user, setUser] = useState(null)
   const [profile, setProfile] = useState(null)
-  const [openai_key,setopenai_key]=useState("")
+  
  
   const data = useGoogleLogin({
     onSuccess: (tokenResponse) =>{setUser(tokenResponse)},
@@ -46,10 +46,14 @@ const Signin= () => {
   }, [user])
 
   return (
-    <div className='signin'>  
- <button type="button" class="google-sign-in-button" onClick={()=>{login()}}>Sign in with Google</button>
+    <div className="signin-div">
+ <div className='signin'>  
+   <h1 className="title">SmartMail Classifier</h1>
+ <button type="button" className="google-sign-in-button" onClick={()=>{login()}}>Sign in with Google</button>
          
     </div>
+    </div>
+   
 
   )
 }

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import express from 'express'
+import atob from 'atob'
 const router=express.Router()
 
 
@@ -8,7 +9,11 @@ router.get('/get_emails',async(req,res)=>{
   const emails_count=Number(req.headers.emails_count)
   
  await fetchInboxMessages(accessToken,emails_count).then((val)=>{
+  
     res.status(200).json({message:"done",data:val})
+
+  }).catch(()=>{
+    res.status(422).json({error:"Internal Server Error",data:[]})
   })
     
  
@@ -31,6 +36,7 @@ const fetchInboxMessages = async (accessToken,email_count) => {
           },
         },
       )
+      
       let email_list=[]
           for(let i=0;i<email_count;i++){
          await fetchMessages_text(accessToken,response.data.messages[i].id).then((val)=>{
@@ -41,7 +47,7 @@ const fetchInboxMessages = async (accessToken,email_count) => {
         return email_list
          
     } catch (error) {
-      console.error('Error fetching Gmail data:', error)
+      console.error('Error fetching Gmail data:')
       return []
     }
   }
@@ -58,13 +64,17 @@ const fetchInboxMessages = async (accessToken,email_count) => {
           },
         },
       )
+
       const val=response.data.payload.headers
       for(let i=0;i<val.length;i++){
         const data=response.data.payload.headers[i]
         if(data.name==="From"){
+      // let emailBodyData=response.data.payload.body.data
+      // let decodedEmailBody = atob(emailBodyData);
           const d={
             from:extractName(data.value),
-            message:response.data.snippet
+            message:response.data.snippet,
+            // body:decodedEmailBody
           }
 
           return d;

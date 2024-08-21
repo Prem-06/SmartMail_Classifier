@@ -6,11 +6,13 @@
     justify-content: top;
     min-height: 100vh;
     height: auto;
-    background-color: #c0ada4;
+    background-color: #080808;
+    
 }
 .email_page h1{
     margin-bottom: 20px;
     margin-top: 50px;
+    color: white;
 }
 .button-div {
     display: flex;
@@ -66,6 +68,13 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    
+}
+.loader-class{
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 600px) {
@@ -74,7 +83,7 @@
         justify-content: space-between;
         align-items: center;
         margin: 10px; 
-        width: 100%;
+        width: 90%;
       }
     
   }

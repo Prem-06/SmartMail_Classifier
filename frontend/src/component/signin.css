@@ -2,52 +2,29 @@
     padding: 0;
     margin: 0;
 }
-
-.signin {
+.signin-div{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #c0ada4;
-    padding: 20px;
+    background-color: black;
+}
+.signin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 40px;
+    background-color: #757575;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     box-sizing: border-box;
 }
-
-.signin input[type="text"] {
-    width: 100%;
-    max-width: 300px;
-    padding: 12px 15px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.signin input[type="text"]:focus {
-    border-color: #007BFF;
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
-}
-
-.signin input[type="button"] {
-    width: 100%;
-    max-width: 300px;
-    padding: 12px 15px;
-    margin: 20px 0;
-    background-color: #4285F4;
+.signin h1{
     color: white;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
 }
+
 
 .google-sign-in-button {
     cursor: pointer;
@@ -73,17 +50,22 @@
     box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
 }
 
-
-
-
-
-
 @media (max-width: 600px) {
     .signin {
-        padding: 15px;
+        width: 90%;
+        padding: 40px 15px;
     }
-    .signin input[type="button"] {
-        width: 100%;
-        max-width: 100%;
+    
+    
+}
+@media (max-width: 420px) {
+    .signin {
+        width: 90%;
+        padding: 40px 0px;
     }
+    .signin h1{
+        font-size: 30px;
+    }
+    
+    
 }
